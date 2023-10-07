@@ -1,12 +1,25 @@
+import React from "react"
 import { cn } from "@/lib/utils"
+import { skeletonVariants } from "../constants/variants/skeleton"
+import { type VariantProps } from "class-variance-authority"
 
-function Skeleton({
+interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement>,
+VariantProps<typeof skeletonVariants> {
+  className?: string
+  width?: number
+  height?: number
+}
+
+const Skeleton: React.FC<SkeletonProps> = ({
   className,
+  variant,
+  size,
+  background,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}) => {
   return (
     <div
-      className={cn("animate-pulse rounded-md bg-muted", className)}
+      className={cn(skeletonVariants({ variant, background, size, className }))}
       {...props}
     />
   )
