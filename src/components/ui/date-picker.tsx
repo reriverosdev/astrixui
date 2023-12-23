@@ -3,8 +3,8 @@ import { format } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { PopoverProps } from "@radix-ui/react-popover"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Calendar, CalendarProps } from "@/components/ui/calendar"
+import { Button } from "../../components/ui/button"
+import { Calendar, CalendarProps } from "../../components/ui/calendar"
 import {
   Popover,
   PopoverContent,
