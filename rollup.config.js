@@ -2,9 +2,10 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import { dts } from "rollup-plugin-dts";
+import copy from 'rollup-plugin-copy'
 import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
-import packageJson from './package.json' assert { type: 'json' };
+import { Buffer } from "buffer";
 import del from "rollup-plugin-delete";
 import alias from '@rollup/plugin-alias';
 
@@ -13,17 +14,43 @@ export default [
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.main,
+        file: 'dist/cjs/index.js',
         format: "cjs",
         exports: "named",
       },
       {
-        file: packageJson.module,
+        file: "dist/esm/index.js",
         format: "esm",
         exports: "named",
       },
     ],
     plugins: [
+      copy({
+        targets: [
+          { 
+            src: './package.json', 
+            dest: './dist/',
+            transform: (contents) => {
+              const jsonContents = JSON.parse(contents);
+              
+              delete jsonContents.scripts;
+              delete jsonContents.devDependencies;
+              delete jsonContents.publishConfig;
+              delete jsonContents.dependencies;
+
+              jsonContents.main = "cjs/index.js";
+              jsonContents.module = "esm/index.js";
+              jsonContents.types = "index.d.ts";
+
+              return Buffer.from(JSON.stringify(jsonContents));
+            }
+          },
+          {
+            src: './README.md',
+            dest: './dist/'
+          }
+        ]
+      }),
       alias({ entries: [{ find: /^@\/(.*)/, replacement: 'src/$1' }] }),
       peerDepsExternal(),
       resolve(),
