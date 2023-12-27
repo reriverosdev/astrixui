@@ -15,10 +15,12 @@ export default [
       {
         file: packageJson.main,
         format: "cjs",
+        exports: "named",
       },
       {
         file: packageJson.module,
         format: "esm",
+        exports: "named",
       },
     ],
     plugins: [

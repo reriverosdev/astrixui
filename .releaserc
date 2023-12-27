@@ -9,12 +9,11 @@
       "@semantic-release/github",
       {
         "assets": [
-           "package.json",
-           "README.md",
-           "CHANGELOG.md",
-           "dist/**/**"
-        ],
-        "message": "chore: Release ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+          { "path": "dist/cjs/index.js", "label": "CommonJS distribution" },
+          { "path": "dist/esm/index.js", "label": "ESM distribution" },
+          { "path": "dist/index.d.ts", "label": "Types distribution" },
+          { "path": "dist/package.json", "label": "Package file" }
+        ]
       }
     ]
   ]
