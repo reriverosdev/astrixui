@@ -11,7 +11,7 @@ AstrixUI is a set of ready-to-go React components and hooks to minimize your eff
 ## Installation
 
 ```bash
-npm i astrix-ui
+npm i astrixui
 ```
 
 ## Contributing
