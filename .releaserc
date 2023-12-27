@@ -8,12 +8,7 @@
     [
       "@semantic-release/github",
       {
-        "assets": [
-          { "path": "dist/cjs/index.js", "label": "CommonJS distribution" },
-          { "path": "dist/esm/index.js", "label": "ESM distribution" },
-          { "path": "dist/index.d.ts", "label": "Types distribution" },
-          { "path": "dist/package.json", "label": "Package file" }
-        ]
+        "successComment": "🎉 This PR is included in version ${nextRelease.version} 🎉 "
       }
     ]
   ]
