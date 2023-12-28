@@ -66,6 +66,6 @@ export default [
       }),
       terser(),
     ],
-    external: ["react", "react-dom", "styled-components", "./src/stories"],
+    external: [/node_modules/, "./src/stories"],
   },
 ];
