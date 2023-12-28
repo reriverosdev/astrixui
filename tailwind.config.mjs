@@ -1,5 +1,7 @@
-import { fontFamily } from "tailwindcss/defaultTheme";
+import defaultTheme from "tailwindcss/defaultTheme.js";
 import tailwindAnimate from "tailwindcss-animate";
+
+const { fontFamily } = defaultTheme;
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -78,4 +80,4 @@ export default {
     },
   },
   plugins: [tailwindAnimate],
-}
+};
