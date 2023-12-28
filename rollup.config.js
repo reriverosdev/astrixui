@@ -24,6 +24,7 @@ export default [
       },
     ],
     plugins: [
+      peerDepsExternal(),
       copy({
         targets: [
           {
@@ -34,8 +35,6 @@ export default [
 
               delete jsonContents.scripts;
               delete jsonContents.publishConfig;
-              delete jsonContents.dependencies;
-              delete jsonContents.devDependencies;
 
               return Buffer.from(JSON.stringify(jsonContents));
             },
@@ -46,6 +45,10 @@ export default [
           },
         ],
       }),
+      alias({ entries: [{ find: /^@\/(.*)/, replacement: "src/$1" }] }),
+      resolve(),
+      commonjs(),
+      typescript({ tsconfig: "./tsconfig.json" }),
       postcss({
         config: {
           path: "./postcss.config.mjs",
@@ -57,11 +60,6 @@ export default [
         },
         plugins: [tailwindcss(tailwindConfig)],
       }),
-      alias({ entries: [{ find: /^@\/(.*)/, replacement: "src/$1" }] }),
-      peerDepsExternal(),
-      resolve(),
-      commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
       terser(),
     ],
     external: ["react", "react-dom", "styled-components", "./src/stories"],
