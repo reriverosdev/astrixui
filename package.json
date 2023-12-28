@@ -3,15 +3,21 @@
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "author": "Ricardo Riveros",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "engines": {
+    "node": ">=18.7"
+  },
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "tag": "latest"
   },
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "rollup -c",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -86,8 +92,6 @@
     "postcss": "^8.4.31",
     "rollup": "^4.9.1",
     "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "semantic-release": "^22.0.12",
