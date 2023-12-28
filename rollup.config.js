@@ -61,9 +61,7 @@ export default [
         },
         extensions: [".css"],
         minimize: true,
-        inject: {
-          insertAt: "top",
-        },
+        extract: true,
         plugins: [tailwindcss(tailwindConfig)],
       }),
       terser(),
