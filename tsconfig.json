@@ -10,6 +10,7 @@
     "sourceMap": true,
     "outDir": "dist",
     "moduleResolution": "node",
+    "importHelpers": false,
     "emitDeclarationOnly": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,

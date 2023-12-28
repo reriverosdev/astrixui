@@ -60,6 +60,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^5.1.0",
+    "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
@@ -94,10 +95,12 @@
     "semantic-release": "^22.0.12",
     "storybook": "^7.4.6",
     "tailwindcss": "^3.3.3",
+    "tslib": "^2.6.2",
     "typescript": "^5.0.2"
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "tslib": "^2.6.2"
   }
 }

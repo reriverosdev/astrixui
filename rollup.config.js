@@ -1,5 +1,6 @@
 import tailwindcss from "tailwindcss";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
+import { babel } from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import copy from "rollup-plugin-copy";
@@ -49,9 +50,10 @@ export default [
       nodeResolve({
         browser: true,
         preferBuiltins: false,
-        extensions: [".js", ".jsx"],
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
       }),
       commonjs(),
+      babel({ babelHelpers: "bundled" }),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss({
         config: {
