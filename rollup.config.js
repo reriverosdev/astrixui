@@ -1,5 +1,5 @@
 import tailwindcss from "tailwindcss";
-import resolve from "@rollup/plugin-node-resolve";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import copy from "rollup-plugin-copy";
@@ -46,7 +46,11 @@ export default [
         ],
       }),
       alias({ entries: [{ find: /^@\/(.*)/, replacement: "src/$1" }] }),
-      resolve(),
+      nodeResolve({
+        browser: true,
+        preferBuiltins: false,
+        extensions: [".js", ".jsx"],
+      }),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
       postcss({
