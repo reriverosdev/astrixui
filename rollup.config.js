@@ -44,6 +44,10 @@ export default [
             src: "./README.md",
             dest: "./dist/",
           },
+          {
+            src: "./tailwind.config.mjs",
+            dest: "./dist/",
+          },
         ],
       }),
       alias({ entries: [{ find: /^@\/(.*)/, replacement: "src/$1" }] }),
