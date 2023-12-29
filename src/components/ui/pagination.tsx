@@ -1,7 +1,7 @@
 import * as React from "react"
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn, getNameSpace } from "@/lib/utils"
 import { ButtonProps } from "../../components/ui/button"
 import { buttonVariants } from "../constants/variants/button"
 
@@ -38,18 +38,19 @@ type PaginationLinkProps = {
   isActive?: boolean
   renderLink?: (props: Omit<PaginationLinkProps, "renderLink">) => React.ReactNode
 } & Pick<ButtonProps, "size"> &
-  React.ComponentProps<"a">
+  WithNameSpace<React.ComponentProps<"a">>
 
 const PaginationLink = ({
   className,
   isActive,
   renderLink,
+  namespace,
   size = "icon",
   ...props
 }: PaginationLinkProps) => {
 
   const paginationLinkClassNames = cn(
-    buttonVariants({
+    buttonVariants(getNameSpace(namespace))({
       variant: isActive ? "outline" : "ghost",
       size,
     }),
@@ -66,7 +67,7 @@ const PaginationLink = ({
         : <a
             aria-current={ariaCurrent}
             className={cn(
-              buttonVariants({
+              buttonVariants(getNameSpace(namespace))({
                 variant: isActive ? "outline" : "ghost",
                 size,
               }),

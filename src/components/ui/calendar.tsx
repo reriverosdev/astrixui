@@ -2,14 +2,15 @@ import * as React from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"
 
-import { cn } from "@/lib/utils"
+import { cn, getNameSpace } from "@/lib/utils"
 import { buttonVariants } from "../constants/variants/button" 
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>
+export type CalendarProps = WithNameSpace<React.ComponentProps<typeof DayPicker>>
 
 function Calendar({
   className,
   classNames,
+  namespace,
   showOutsideDays = true,
   ...props
 }: CalendarProps) {
@@ -24,7 +25,7 @@ function Calendar({
         caption_label: "text-sm font-medium",
         nav: "space-x-1 flex items-center",
         nav_button: cn(
-          buttonVariants({ variant: "outline" }),
+          buttonVariants(getNameSpace(namespace))({ variant: "outline" }),
           "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
         ),
         nav_button_previous: "absolute left-1",
@@ -36,7 +37,7 @@ function Calendar({
         row: "flex w-full mt-2",
         cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
-          buttonVariants({ variant: "ghost" }),
+          buttonVariants(getNameSpace(namespace))({ variant: "ghost" }),
           "h-9 w-9 p-0 font-normal aria-selected:opacity-100"
         ),
         day_selected:

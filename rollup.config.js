@@ -45,7 +45,7 @@ export default [
             dest: "./dist/",
           },
           {
-            src: "./tailwind.config.mjs",
+            src: "./plugin.js",
             dest: "./dist/",
           },
         ],
