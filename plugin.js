@@ -62,10 +62,10 @@ export default plugin.withOptions(function (options = {}) {
         fontSize: theme("fontSize.sm.0", fontSize.sm[0]),
         transitionProperty: transitionProperty.all,
         '&[data-state=closed]': {
-          animation: 'animate-accordion-up',
+          animation: 'accordion-up 0.2s ease-out',
         },
         '&[data-state=open]': {
-          animation: 'animate-accordion-down',
+          animation: 'accordion-down 0.2s ease-out',
         },
       },
       [`.${namespace}-accordion-children`]: {
@@ -216,14 +216,14 @@ export default plugin.withOptions(function (options = {}) {
         backgroundColor: 'var(--primary)',
         color: 'var(--primary-foreground)',
         '&:hover': {
-          backgroundColor: 'var(--primary90)/90',
+          backgroundColor: 'var(--primary-90)',
         },
       },
       [`.${namespace}-button-destructive`]: {
         backgroundColor: 'var(--destructive)',
         color: 'var(--destructive-foreground)',
         '&:hover': {
-          backgroundColor: 'var(--destructive)/90',
+          backgroundColor: 'var(--destructive-90)',
         },
       },
       [`.${namespace}-button-outline`]: {
@@ -238,7 +238,7 @@ export default plugin.withOptions(function (options = {}) {
         backgroundColor: 'var(--secondary)',
         color: 'var(--secondary-foreground)',
         '&:hover': {
-          backgroundColor: 'var(--secondary)/80',
+          backgroundColor: 'var(--secondary-80)',
         },
       },
       [`.${namespace}-button-ghost`]: {
