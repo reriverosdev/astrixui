@@ -144,7 +144,7 @@ export default plugin.withOptions(function (options = {}) {
         zIndex: zIndex["50"],
         display: 'grid',
         width: width({ theme }).full,
-        maxWidth: maxWidth({ theme, breakpoints: config('breakpoints')}).lg,
+        maxWidth: maxWidth({ theme, breakpoints: config('breakpoints', () => {})}).lg,
         transform: `translate(-${translate({ theme })['1/2']},-${translate({ theme })['1/2']})`,
         gap: gap({ theme })["4"],
         border: '1px solid',
@@ -216,14 +216,14 @@ export default plugin.withOptions(function (options = {}) {
         backgroundColor: 'var(--primary)',
         color: 'var(--primary-foreground)',
         '&:hover': {
-          backgroundColor: 'var(--primary/90)',
+          backgroundColor: 'var(--primary90)/90',
         },
       },
       [`.${namespace}-button-destructive`]: {
         backgroundColor: 'var(--destructive)',
         color: 'var(--destructive-foreground)',
         '&:hover': {
-          backgroundColor: 'var(--destructive/90)',
+          backgroundColor: 'var(--destructive)/90',
         },
       },
       [`.${namespace}-button-outline`]: {
@@ -238,7 +238,7 @@ export default plugin.withOptions(function (options = {}) {
         backgroundColor: 'var(--secondary)',
         color: 'var(--secondary-foreground)',
         '&:hover': {
-          backgroundColor: 'var(--secondary/80)',
+          backgroundColor: 'var(--secondary)/80',
         },
       },
       [`.${namespace}-button-ghost`]: {
@@ -281,8 +281,18 @@ export default plugin.withOptions(function (options = {}) {
       },
     })
   }
-}, function() {
+}, function(options = {}) {
+
+  const namespace = options.namespace ?? 'astrix';
+
+  const classRegexp = new RegExp(`^${namespace}-`);
+
   return {
+    safelist: [
+      {
+        pattern: classRegexp
+      }
+    ],
     theme: {
       extend: {
         keyframes: {
