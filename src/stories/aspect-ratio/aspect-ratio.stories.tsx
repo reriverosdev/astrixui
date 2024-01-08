@@ -1,10 +1,11 @@
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react';
-import { Skeleton } from '../..';
+import { AspectRatio } from '../..';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Example/Skeleton',
-  component: Skeleton,
+  title: 'Example/AspectRatio',
+  component: AspectRatio,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
@@ -13,7 +14,14 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
-} satisfies Meta<typeof Skeleton>;
+  decorators: [
+    (Story) => (
+      <div style={{ width: "300px", borderRadius: "6px"  }}>
+        <Story />
+      </div>
+    )
+  ]
+} satisfies Meta<typeof AspectRatio>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -21,9 +29,16 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    className: '',
-    variant: 'circle',
-    size: 'default',
-    background: 'default'
+    className: 'bg-muted',
+    ratio: 16 / 9,
+    children: <img src="./src/stories/assets/context.png" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    className: 'bg-muted',
+    ratio: 4 / 3,
+    children: <img src="./src/stories/assets/context.png" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
   },
 };

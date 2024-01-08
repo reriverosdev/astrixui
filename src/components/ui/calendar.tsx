@@ -3,50 +3,40 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"
 
 import { cn, getNameSpace } from "@/lib/utils"
-import { buttonVariants } from "../constants/variants/button" 
 
 export type CalendarProps = WithNameSpace<React.ComponentProps<typeof DayPicker>>
 
-function Calendar({
+const Calendar: React.FC<CalendarProps> = ({
   className,
   classNames,
   namespace,
   showOutsideDays = true,
   ...props
-}: CalendarProps) {
+}) => {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      className={cn("p-3", className)}
+      className={cn(`${getNameSpace(namespace)}-calendar`, className)}
       classNames={{
-        months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-        month: "space-y-4",
-        caption: "flex justify-center pt-1 relative items-center",
-        caption_label: "text-sm font-medium",
-        nav: "space-x-1 flex items-center",
-        nav_button: cn(
-          buttonVariants(getNameSpace(namespace))({ variant: "outline" }),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
-        ),
-        nav_button_previous: "absolute left-1",
-        nav_button_next: "absolute right-1",
-        table: "w-full border-collapse space-y-1",
-        head_row: "flex",
-        head_cell:
-          "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
-        row: "flex w-full mt-2",
-        cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-        day: cn(
-          buttonVariants(getNameSpace(namespace))({ variant: "ghost" }),
-          "h-9 w-9 p-0 font-normal aria-selected:opacity-100"
-        ),
-        day_selected:
-          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-        day_today: "bg-accent text-accent-foreground",
-        day_outside: "text-muted-foreground opacity-50",
-        day_disabled: "text-muted-foreground opacity-50",
-        day_range_middle:
-          "aria-selected:bg-accent aria-selected:text-accent-foreground",
+        months: `${getNameSpace(namespace)}-calendar-months`,
+        month: `${getNameSpace(namespace)}-calendar-month`,
+        caption: `${getNameSpace(namespace)}-calendar-caption`,
+        caption_label: `${getNameSpace(namespace)}-calendar-caption-label`,
+        nav: `${getNameSpace(namespace)}-calendar-nav`,
+        nav_button: `${getNameSpace(namespace)}-calendar-nav-button`,
+        nav_button_previous: `${getNameSpace(namespace)}-calendar-nav-button-previous`,
+        nav_button_next: `${getNameSpace(namespace)}-calendar-nav-button-next`,
+        table: `${getNameSpace(namespace)}-calendar-table`,
+        head_row: `${getNameSpace(namespace)}-calendar-head-row`,
+        head_cell: `${getNameSpace(namespace)}-calendar-head-cell`,
+        row: `${getNameSpace(namespace)}-calendar-row`,
+        cell: `${getNameSpace(namespace)}-calendar-cell`,
+        day: `${getNameSpace(namespace)}-calendar-day`,
+        day_selected: `${getNameSpace(namespace)}-calendar-selected`,
+        day_today: `${getNameSpace(namespace)}-calendar-today`,
+        day_outside: `${getNameSpace(namespace)}-calendar-disabled`,
+        day_disabled: `${getNameSpace(namespace)}-calendar-disabled`,
+        day_range_middle: `${getNameSpace(namespace)}-calendar-range-middle`,
         day_hidden: "invisible",
         ...classNames,
       }}

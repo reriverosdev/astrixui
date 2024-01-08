@@ -1,15 +1,17 @@
 import { getNameSpace } from "@/lib/utils";
 import { cva } from "class-variance-authority";
 
-const buttonVariants = (namespace: string) => cva(
+const  buttonVariants = (namespace: string) => cva(
   `${getNameSpace(namespace)}-button`,
   {
     variants: {
       variant: {
         default: `${getNameSpace(namespace)}-button-default`,
-        destructive: `${getNameSpace(namespace)}-button-destructive`,
         outline: `${getNameSpace(namespace)}-button-outline`,
-        secondary: `${getNameSpace(namespace)}-button-secondary`,
+        destructive: `${getNameSpace(namespace)}-button-destructive`,
+        'destructive-outline': `${getNameSpace(namespace)}-button-destructive-outline`,
+        success: `${getNameSpace(namespace)}-button-success`,
+        'success-outline': `${getNameSpace(namespace)}-button-success-outline`,
         ghost: `${getNameSpace(namespace)}-button-ghost`,
         link: `${getNameSpace(namespace)}-button-link`,
       },

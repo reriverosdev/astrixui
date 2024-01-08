@@ -1,26 +1,12 @@
 import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import { type VariantProps } from "class-variance-authority"
 
 import { cn, getNameSpace } from "@/lib/utils"
-
-const alertVariants = (namespace?: string) => cva(
-  `${getNameSpace(namespace)}-alert`,
-  {
-    variants: {
-      variant: {
-        default: `${getNameSpace(namespace)}-alert-default`,
-        destructive: `${getNameSpace(namespace)}-alert-destructive`
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-)
+import { alertVariants } from "../constants/variants/alert"
 
 const Alert = React.forwardRef<
   WithNameSpace<HTMLDivElement>,
-  WithNameSpace<React.HTMLAttributes<HTMLDivElement>> & VariantProps<ReturnType<typeof  alertVariants>>
+  WithNameSpace<React.HTMLAttributes<HTMLDivElement>> & VariantProps<ReturnType<typeof alertVariants>>
 >(({ className, namespace, variant, children, ...props }, ref) => (
   <div
     ref={ref}

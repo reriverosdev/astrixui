@@ -3,18 +3,20 @@ import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
 
 import { childrenWithNamespace, cn, getNameSpace } from "@/lib/utils"
 import { buttonVariants } from "../constants/variants/button" 
+import { VariantProps } from "class-variance-authority";
 
-const AlertDialog = React.forwardRef<
-  WithNameSpace<React.ElementRef<typeof AlertDialogPrimitive.Root>>,
-  WithNameSpace<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Root>>
-> (({ namespace, children }) => {
+const AlertDialog : React.FC<
+  React.PropsWithChildren<
+    WithNameSpace<typeof AlertDialogPrimitive.Root>
+  >
+> = ({ namespace, children }) => {
   return (
     <AlertDialogPrimitive.Root>
       {
         children && childrenWithNamespace(children, getNameSpace(namespace))}
     </AlertDialogPrimitive.Root>
   )
-})
+};
 
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger
 
@@ -26,7 +28,7 @@ const AlertDialogOverlay = React.forwardRef<
 >(({ className, namespace, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
     className={cn(
-      `${getNameSpace(namespace)}-alert-dialog-overlay`,
+      `${getNameSpace(namespace)}-alert-dialog-overlay data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0`,
       className
     )}
     {...props}
@@ -44,7 +46,7 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogPrimitive.Content
       ref={ref}
       className={cn(
-        `${getNameSpace(namespace)}-alert-dialog-content`,
+        `${getNameSpace(namespace)}-alert-dialog-content data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-open:slide-in-from-left-1/2 data-open:slide-in-from-top-[48%] data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-closed:slide-out-to-left-1/2 data-closed:slide-out-to-top-[48%]`,
         className
       )}
       {...props}
@@ -121,25 +123,25 @@ AlertDialogDescription.displayName =
   AlertDialogPrimitive.Description.displayName
 
 const AlertDialogAction = React.forwardRef<
-  WithNameSpace<React.ElementRef<typeof AlertDialogPrimitive.Action>>,
-  WithNameSpace<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action>>
->(({ className, namespace, ...props }, ref) => (
+  WithNameSpace<React.ElementRef<typeof AlertDialogPrimitive.Action> & VariantProps<ReturnType<typeof buttonVariants>>>,
+  WithNameSpace<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action> & VariantProps<ReturnType<typeof buttonVariants>>>
+>(({ className, namespace, variant, ...props }, ref) => (
   <AlertDialogPrimitive.Action
     ref={ref}
-    className={cn(buttonVariants(getNameSpace(namespace))(), className)}
+    className={cn(buttonVariants(getNameSpace(namespace))({ variant }), className)}
     {...props}
   />
 ))
 AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
 
 const AlertDialogCancel = React.forwardRef<
-  WithNameSpace<React.ElementRef<typeof AlertDialogPrimitive.Cancel>>,
-  WithNameSpace<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>>
->(({ className, namespace, ...props }, ref) => (
+  WithNameSpace<React.ElementRef<typeof AlertDialogPrimitive.Cancel> & VariantProps<ReturnType<typeof buttonVariants>>>,
+  WithNameSpace<React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel> & VariantProps<ReturnType<typeof buttonVariants>>>
+>(({ className, namespace, variant, ...props }, ref) => (
   <AlertDialogPrimitive.Cancel
     ref={ref}
     className={cn(
-      buttonVariants(getNameSpace(namespace))({ variant: "outline" }),
+      buttonVariants(getNameSpace(namespace))({ variant }),
       "mt-2 sm:mt-0",
       className
     )}

@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils"
 import { badgeVariants } from "../constants/variants/badge"
 
 export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+  extends WithNameSpace<React.HTMLAttributes<HTMLDivElement>>,
+    VariantProps<ReturnType<typeof badgeVariants>> {}
 
-const Badge: React.FC<BadgeProps> = ({ className, variant, ...props }) => {
+const Badge: React.FC<React.PropsWithChildren<BadgeProps>> = ({ className, namespace, variant, ...props }) => {
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <div className={cn(badgeVariants(namespace)({ variant }), className)} {...props} />
   )
 }
 
