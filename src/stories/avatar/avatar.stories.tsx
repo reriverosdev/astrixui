@@ -1,6 +1,6 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react';
-import { Avatar, AvatarImage, AvatarFallback } from '../..';
+import type { Meta, StoryObj } from '@storybook/react'
+import { Avatar, AvatarImage, AvatarFallback } from '../..'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -14,10 +14,10 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
-} satisfies Meta<typeof Avatar>;
+} satisfies Meta<typeof Avatar>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
@@ -28,9 +28,9 @@ export const Primary: Story = {
         <AvatarImage src="./src/stories/assets/context.png" />
         <AvatarFallback>Avatar </AvatarFallback>
       </>
-    )
+    ),
   },
-};
+}
 
 export const Secondary: Story = {
   args: {
@@ -40,6 +40,6 @@ export const Secondary: Story = {
         <AvatarImage src="" />
         <AvatarFallback>Avatar </AvatarFallback>
       </>
-    )
+    ),
   },
-};
+}

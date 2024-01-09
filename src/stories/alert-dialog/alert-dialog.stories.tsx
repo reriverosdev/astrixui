@@ -1,6 +1,6 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react';
-import { 
+import type { Meta, StoryObj } from '@storybook/react'
+import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -10,7 +10,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '../..';
+} from '../..'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -24,10 +24,10 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
-} satisfies Meta<typeof AlertDialog>;
+} satisfies Meta<typeof AlertDialog>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
@@ -56,9 +56,9 @@ export const Primary: Story = {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    )
-  ]
-};
+    ),
+  ],
+}
 
 export const Secondary: Story = {
   args: {
@@ -86,6 +86,6 @@ export const Secondary: Story = {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    )
-  ]
-};
+    ),
+  ],
+}

@@ -1,4 +1,4 @@
-import "./index.css";
+import './index.css'
 
-export * from "./components/ui";
-export * from "./components/hooks";
+export * from './components/ui'
+export * from './components/hooks'

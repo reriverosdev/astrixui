@@ -1,10 +1,12 @@
-import * as React from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker } from "react-day-picker"
+import * as React from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { DayPicker } from 'react-day-picker'
 
-import { cn, getNameSpace } from "@/lib/utils"
+import { cn, getNameSpace } from '@/lib/utils'
 
-export type CalendarProps = WithNameSpace<React.ComponentProps<typeof DayPicker>>
+export type CalendarProps = WithNameSpace<
+  React.ComponentProps<typeof DayPicker>
+>
 
 const Calendar: React.FC<CalendarProps> = ({
   className,
@@ -24,7 +26,9 @@ const Calendar: React.FC<CalendarProps> = ({
         caption_label: `${getNameSpace(namespace)}-calendar-caption-label`,
         nav: `${getNameSpace(namespace)}-calendar-nav`,
         nav_button: `${getNameSpace(namespace)}-calendar-nav-button`,
-        nav_button_previous: `${getNameSpace(namespace)}-calendar-nav-button-previous`,
+        nav_button_previous: `${getNameSpace(
+          namespace
+        )}-calendar-nav-button-previous`,
         nav_button_next: `${getNameSpace(namespace)}-calendar-nav-button-next`,
         table: `${getNameSpace(namespace)}-calendar-table`,
         head_row: `${getNameSpace(namespace)}-calendar-head-row`,
@@ -37,7 +41,7 @@ const Calendar: React.FC<CalendarProps> = ({
         day_outside: `${getNameSpace(namespace)}-calendar-disabled`,
         day_disabled: `${getNameSpace(namespace)}-calendar-disabled`,
         day_range_middle: `${getNameSpace(namespace)}-calendar-range-middle`,
-        day_hidden: "invisible",
+        day_hidden: 'invisible',
         ...classNames,
       }}
       components={{
@@ -48,6 +52,6 @@ const Calendar: React.FC<CalendarProps> = ({
     />
   )
 }
-Calendar.displayName = "Calendar"
+Calendar.displayName = 'Calendar'
 
 export { Calendar }

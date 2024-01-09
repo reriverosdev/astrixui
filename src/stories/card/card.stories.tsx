@@ -1,6 +1,6 @@
-import React from "react";
-import type { Meta, StoryObj } from "@storybook/react";
-import { BellIcon, CheckIcon } from "@radix-ui/react-icons";
+import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import { BellIcon, CheckIcon } from '@radix-ui/react-icons'
 import {
   Card,
   CardContent,
@@ -10,18 +10,18 @@ import {
   CardTitle,
   Button,
   Switch,
-} from "../..";
+} from '../..'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: "Example/Card",
+  title: 'Example/Card',
   component: Card,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
-    layout: "centered",
+    layout: 'centered',
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
   decorators: [
@@ -40,19 +40,19 @@ const meta = {
       </Card>
     ),
   ],
-} satisfies Meta<typeof Card>;
+} satisfies Meta<typeof Card>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
-    className: "",
+    className: '',
   },
   parameters: {
-    title: "Notifications",
-    description: "You have 3 unread messages.",
+    title: 'Notifications',
+    description: 'You have 3 unread messages.',
     content: (
       <div className=" flex items-center space-x-4 rounded-md border p-4">
         <BellIcon />
@@ -71,4 +71,4 @@ export const Primary: Story = {
       </Button>
     ),
   },
-};
+}

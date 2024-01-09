@@ -1,7 +1,7 @@
-import * as React from "react"
-import * as AvatarPrimitive from "@radix-ui/react-avatar"
+import * as React from 'react'
+import * as AvatarPrimitive from '@radix-ui/react-avatar'
 
-import { cn, getNameSpace } from "@/lib/utils"
+import { cn, getNameSpace } from '@/lib/utils'
 
 const Avatar = React.forwardRef<
   WithNameSpace<React.ElementRef<typeof AvatarPrimitive.Root>>,
@@ -9,17 +9,19 @@ const Avatar = React.forwardRef<
 >(({ className, namespace, children, ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
-    className={cn(
-      `${getNameSpace(namespace)}-avatar`,
-      className
-    )}
+    className={cn(`${getNameSpace(namespace)}-avatar`, className)}
     {...props}
   >
-    {
-      children && 
-        React.Children.map<WithNameSpace<React.ReactNode>, WithNameSpace<React.ReactNode>>(children, (child) => 
-          React.isValidElement(child) && React.cloneElement(child, { namespace }))
-    }
+    {children &&
+      React.Children.map<
+        WithNameSpace<React.ReactNode>,
+        WithNameSpace<React.ReactNode>
+      >(
+        children,
+        (child) =>
+          React.isValidElement(child) &&
+          React.cloneElement(child, { namespace })
+      )}
   </AvatarPrimitive.Root>
 ))
 Avatar.displayName = AvatarPrimitive.Root.displayName
@@ -42,10 +44,7 @@ const AvatarFallback = React.forwardRef<
 >(({ className, namespace, ...props }, ref) => (
   <AvatarPrimitive.Fallback
     ref={ref}
-    className={cn(
-      `${getNameSpace(namespace)}-avatar-fallback`,
-      className
-    )}
+    className={cn(`${getNameSpace(namespace)}-avatar-fallback`, className)}
     {...props}
   />
 ))

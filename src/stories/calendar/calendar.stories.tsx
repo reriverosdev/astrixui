@@ -1,6 +1,6 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react';
-import { Calendar } from '../..';
+import type { Meta, StoryObj } from '@storybook/react'
+import { Calendar } from '../..'
 import { useArgs } from '@storybook/preview-api'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -15,20 +15,22 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
-} satisfies Meta<typeof Calendar>;
+} satisfies Meta<typeof Calendar>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Primary: Omit<Story, 'className'> & { args: { className : string }}  = {
+export const Primary: Omit<Story, 'className'> & {
+  args: { className: string }
+} = {
   args: {
     className: '',
     mode: 'single',
     selected: null,
-    onSelect: () => {}
+    onSelect: () => {},
   },
-  render: function Component (args) {
+  render: function Component(args) {
     const [, setArgs] = useArgs()
 
     const onSelect = (value) => {
@@ -38,16 +40,18 @@ export const Primary: Omit<Story, 'className'> & { args: { className : string }}
 
     return <Calendar {...args} onSelect={onSelect} />
   },
-};
+}
 
-export const Secondary: Omit<Story, 'className'> & { args: { className : string }}  = {
+export const Secondary: Omit<Story, 'className'> & {
+  args: { className: string }
+} = {
   args: {
     className: '',
     mode: 'range',
     selected: null,
-    onSelect: () => {}
+    onSelect: () => {},
   },
-  render: function Component (args) {
+  render: function Component(args) {
     const [, setArgs] = useArgs()
 
     const onSelect = (value) => {
@@ -57,17 +61,19 @@ export const Secondary: Omit<Story, 'className'> & { args: { className : string 
 
     return <Calendar {...args} onSelect={onSelect} />
   },
-};
+}
 
-export const Tertiary: Omit<Story, 'className'> & { args: { className : string }}  = {
+export const Tertiary: Omit<Story, 'className'> & {
+  args: { className: string }
+} = {
   args: {
     className: '',
     mode: 'multiple',
     max: 3,
     selected: null,
-    onSelect: () => {}
+    onSelect: () => {},
   },
-  render: function Component (args) {
+  render: function Component(args) {
     const [, setArgs] = useArgs()
 
     const onSelect = (value) => {
@@ -77,4 +83,4 @@ export const Tertiary: Omit<Story, 'className'> & { args: { className : string }
 
     return <Calendar {...args} onSelect={onSelect} />
   },
-};
+}

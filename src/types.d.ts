@@ -1,2 +1,1 @@
-
-type WithNameSpace<T> = T & { namespace?: string };
+type WithNameSpace<T> = T & { namespace?: string }

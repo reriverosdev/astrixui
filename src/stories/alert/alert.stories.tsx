@@ -1,9 +1,7 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react';
-import { RocketIcon, ExclamationTriangleIcon  } from "@radix-ui/react-icons"
-import { 
-  Alert, AlertDescription, AlertTitle
-} from '../..';
+import type { Meta, StoryObj } from '@storybook/react'
+import { RocketIcon, ExclamationTriangleIcon } from '@radix-ui/react-icons'
+import { Alert, AlertDescription, AlertTitle } from '../..'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -17,10 +15,10 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
-} satisfies Meta<typeof Alert>;
+} satisfies Meta<typeof Alert>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
@@ -36,13 +34,11 @@ export const Primary: Story = {
       <Alert>
         <RocketIcon className="h-4 w-4" />
         <AlertTitle>{options.parameters.title}</AlertTitle>
-        <AlertDescription>
-          {options.parameters.description}
-        </AlertDescription>
+        <AlertDescription>{options.parameters.description}</AlertDescription>
       </Alert>
-    )
-  ]
-};
+    ),
+  ],
+}
 
 export const Destructive: Story = {
   args: {
@@ -57,10 +53,8 @@ export const Destructive: Story = {
       <Alert variant="destructive">
         <ExclamationTriangleIcon className="h-4 w-4" />
         <AlertTitle>{options.parameters.title}</AlertTitle>
-        <AlertDescription>
-          {options.parameters.description}
-        </AlertDescription>
+        <AlertDescription>{options.parameters.description}</AlertDescription>
       </Alert>
-    )
-  ]
-};
+    ),
+  ],
+}

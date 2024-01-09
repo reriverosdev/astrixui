@@ -37,7 +37,7 @@ const ringBoxShadow = {
 
 function filterDefault(values) {
   return Object.fromEntries(
-    Object.entries(values).filter(([key]) => key !== "DEFAULT")
+    Object.entries(values).filter(([key]) => key !== "DEFAULT"),
   );
 }
 
@@ -45,20 +45,6 @@ function setOpacity(hex, alpha) {
   return `${hex}${Math.floor(alpha * 255)
     .toString(16)
     .padStart(2, 0)}`;
-}
-
-function shadowWithColor(originalBoxShadow, shadowColor) {
-  // Remove any existing color instruction
-  const strippedBoxShadow = originalBoxShadow.replace(
-    /rgba\([^)]*\)|#[0-9a-fA-F]+|hsl\([^)]*\)/g,
-    ""
-  );
-
-  // Add the new color to the modified box-shadow property
-  const modifiedBoxShadow =
-    strippedBoxShadow.trim() + (strippedBoxShadow ? ", " : "") + shadowColor;
-
-  return modifiedBoxShadow;
 }
 
 export default plugin.withOptions(
@@ -102,7 +88,7 @@ export default plugin.withOptions(
           "zoom-in": (value) => ({ "--tw-enter-scale": value }),
           "zoom-out": (value) => ({ "--tw-exit-scale": value }),
         },
-        { values: theme("animationScale") }
+        { values: theme("animationScale") },
       );
 
       matchUtilities(
@@ -110,7 +96,7 @@ export default plugin.withOptions(
           "spin-in": (value) => ({ "--tw-enter-rotate": value }),
           "spin-out": (value) => ({ "--tw-exit-rotate": value }),
         },
-        { values: theme("animationRotate") }
+        { values: theme("animationRotate") },
       );
 
       matchUtilities(
@@ -140,7 +126,7 @@ export default plugin.withOptions(
             "--tw-exit-translate-x": value,
           }),
         },
-        { values: theme("animationTranslate") }
+        { values: theme("animationTranslate") },
       );
 
       matchUtilities(
@@ -148,22 +134,22 @@ export default plugin.withOptions(
           "fade-in": (value) => ({ "--tw-enter-opacity": value }),
           "fade-out": (value) => ({ "--tw-exit-opacity": value }),
         },
-        { values: theme("animationOpacity") }
+        { values: theme("animationOpacity") },
       );
 
       matchUtilities(
         { duration: (value) => ({ animationDuration: value }) },
-        { values: filterDefault(theme("animationDuration")) }
+        { values: filterDefault(theme("animationDuration")) },
       );
 
       matchUtilities(
         { delay: (value) => ({ animationDelay: value }) },
-        { values: theme("animationDelay") }
+        { values: theme("animationDelay") },
       );
 
       matchUtilities(
         { ease: (value) => ({ animationTimingFunction: value }) },
-        { values: filterDefault(theme("animationTimingFunction")) }
+        { values: filterDefault(theme("animationTimingFunction")) },
       );
 
       addUtilities({
@@ -173,17 +159,17 @@ export default plugin.withOptions(
 
       matchUtilities(
         { "fill-mode": (value) => ({ animationFillMode: value }) },
-        { values: theme("animationFillMode") }
+        { values: theme("animationFillMode") },
       );
 
       matchUtilities(
         { direction: (value) => ({ animationDirection: value }) },
-        { values: theme("animationDirection") }
+        { values: theme("animationDirection") },
       );
 
       matchUtilities(
         { repeat: (value) => ({ animationIterationCount: value }) },
-        { values: theme("animationRepeat") }
+        { values: theme("animationRepeat") },
       );
 
       addComponents({
@@ -212,7 +198,7 @@ export default plugin.withOptions(
           flexShrink: theme("flexShrink.0", flexShrink["0"]),
           transitionDuration: theme(
             "transitionDuration.200",
-            transitionDuration["200"]
+            transitionDuration["200"],
           ),
         },
         [`.${namespace}-accordion-content`]: {
@@ -473,16 +459,16 @@ export default plugin.withOptions(
         [`.${namespace}-button-default`]: {
           backgroundColor: theme(
             "overrides.button.default.background",
-            themeColors({ colors }).sky[600]
+            themeColors({ colors }).sky[600],
           ),
           color: theme(
             "overrides.button.default.text",
-            themeColors({ colors }).white
+            themeColors({ colors }).white,
           ),
           "&:hover": {
             backgroundColor: theme(
               "overrides.button.default.hover.background",
-              themeColors({ colors }).sky[800]
+              themeColors({ colors }).sky[800],
             ),
           },
         },
@@ -491,40 +477,40 @@ export default plugin.withOptions(
           borderStyle: "solid",
           borderColor: theme(
             "overrides.button.outline.border",
-            themeColors({ colors }).sky[600]
+            themeColors({ colors }).sky[600],
           ),
           backgroundColor: theme(
             "overrides.button.outline.background",
-            themeColors({ colors }).white
+            themeColors({ colors }).white,
           ),
           color: theme(
             "overrides.button.outline.text",
-            themeColors({ colors }).neutral[900]
+            themeColors({ colors }).neutral[900],
           ),
           "&:hover": {
             backgroundColor: theme(
               "overrides.button.outline.hover.background",
-              themeColors({ colors }).sky[600]
+              themeColors({ colors }).sky[600],
             ),
             color: theme(
               "overrides.button.secondary.hover.text",
-              themeColors({ colors }).white
+              themeColors({ colors }).white,
             ),
           },
         },
         [`.${namespace}-button-destructive`]: {
           backgroundColor: theme(
             "overrides.button.destructive.background",
-            themeColors({ colors }).red[600]
+            themeColors({ colors }).red[600],
           ),
           color: theme(
             "overrides.button.destructive.text",
-            themeColors({ colors }).white
+            themeColors({ colors }).white,
           ),
           "&:hover": {
             backgroundColor: theme(
               "overrides.button.destructive.hover.background",
-              themeColors({ colors }).red[800]
+              themeColors({ colors }).red[800],
             ),
           },
         },
@@ -533,40 +519,40 @@ export default plugin.withOptions(
           borderStyle: "solid",
           borderColor: theme(
             "overrides.button.outline.border",
-            themeColors({ colors }).red[600]
+            themeColors({ colors }).red[600],
           ),
           backgroundColor: theme(
             "overrides.button.outline.background",
-            themeColors({ colors }).white
+            themeColors({ colors }).white,
           ),
           color: theme(
             "overrides.button.outline.text",
-            themeColors({ colors }).neutral[900]
+            themeColors({ colors }).neutral[900],
           ),
           "&:hover": {
             backgroundColor: theme(
               "overrides.button.outline.hover.background",
-              themeColors({ colors }).red[600]
+              themeColors({ colors }).red[600],
             ),
             color: theme(
               "overrides.button.secondary.hover.text",
-              themeColors({ colors }).white
+              themeColors({ colors }).white,
             ),
           },
         },
         [`.${namespace}-button-success`]: {
           backgroundColor: theme(
             "overrides.button.success.background",
-            themeColors({ colors }).green[600]
+            themeColors({ colors }).green[600],
           ),
           color: theme(
             "overrides.button.success.text",
-            themeColors({ colors }).white
+            themeColors({ colors }).white,
           ),
           "&:hover": {
             backgroundColor: theme(
               "overrides.button.success.hover.background",
-              themeColors({ colors }).green[700]
+              themeColors({ colors }).green[700],
             ),
           },
         },
@@ -575,58 +561,58 @@ export default plugin.withOptions(
           borderStyle: "solid",
           borderColor: theme(
             "overrides.button.outline.border",
-            themeColors({ colors }).green[600]
+            themeColors({ colors }).green[600],
           ),
           backgroundColor: theme(
             "overrides.button.outline.background",
-            themeColors({ colors }).white
+            themeColors({ colors }).white,
           ),
           color: theme(
             "overrides.button.outline.text",
-            themeColors({ colors }).neutral[900]
+            themeColors({ colors }).neutral[900],
           ),
           "&:hover": {
             backgroundColor: theme(
               "overrides.button.outline.hover.background",
-              themeColors({ colors }).green[600]
+              themeColors({ colors }).green[600],
             ),
             color: theme(
               "overrides.button.secondary.hover.text",
-              themeColors({ colors }).white
+              themeColors({ colors }).white,
             ),
           },
         },
         [`.${namespace}-button-ghost`]: {
           backgroundColor: theme(
             "overrides.button.ghost.background",
-            themeColors({ colors }).transparent
+            themeColors({ colors }).transparent,
           ),
           color: theme(
             "overrides.button.ghost.text",
-            themeColors({ colors }).neutral[900]
+            themeColors({ colors }).neutral[900],
           ),
           "&:hover": {
             backgroundColor: theme(
               "overrides.button.ghost.hover.background",
-              themeColors({ colors }).gray[600]
+              themeColors({ colors }).gray[600],
             ),
             color: theme(
               "overrides.button.ghost.hover.text",
-              themeColors({ colors }).white
+              themeColors({ colors }).white,
             ),
           },
         },
         [`.${namespace}-button-link`]: {
           color: theme(
             "overrides.button.link.text",
-            themeColors({ colors }).neutral[900]
+            themeColors({ colors }).neutral[900],
           ),
           "&:hover": {
             textDecoration: "underline",
             textUnderlineOffset: textUnderlineOffset["4"],
             textDecorationColor: theme(
               "overrides.button.link.hover.underline",
-              themeColors({ colors }).gray[600]
+              themeColors({ colors }).gray[600],
             ),
           },
         },
@@ -899,10 +885,14 @@ export default plugin.withOptions(
           keyframes: {
             "accordion-down": {
               from: { height: "0" },
-              to: { height: "var(--radix-accordion-content-height)" },
+              to: {
+                height: "var(--radix-accordion-content-height)",
+              },
             },
             "accordion-up": {
-              from: { height: "var(--radix-accordion-content-height)" },
+              from: {
+                height: "var(--radix-accordion-content-height)",
+              },
               to: { height: "0" },
             },
             enter: {
@@ -932,5 +922,5 @@ export default plugin.withOptions(
         },
       },
     };
-  }
+  },
 );

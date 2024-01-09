@@ -1,11 +1,11 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react';
-import { 
+import type { Meta, StoryObj } from '@storybook/react'
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '../..';
+} from '../..'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -22,25 +22,24 @@ const meta = {
   decorators: [
     (_, options) => (
       <Accordion type="single" collapsible>
-      <AccordionItem value="item-1">
-        <AccordionTrigger>{options.parameters.trigger}</AccordionTrigger>
-        <AccordionContent>
-          {options.parameters.content}
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-    )
-  ]
-} satisfies Meta<typeof Accordion> & typeof Accordion.defaultProps;
+        <AccordionItem value="item-1">
+          <AccordionTrigger>{options.parameters.trigger}</AccordionTrigger>
+          <AccordionContent>{options.parameters.content}</AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    ),
+  ],
+} satisfies Meta<typeof Accordion> & typeof Accordion.defaultProps
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-export const Primary: Omit<Story, 'args'> & { args: Record<string, unknown> } = {
-  args: {},
-  parameters: {
-    trigger: 'Accordion trigger',
-    content: 'Accordion content',
+export const Primary: Omit<Story, 'args'> & { args: Record<string, unknown> } =
+  {
+    args: {},
+    parameters: {
+      trigger: 'Accordion trigger',
+      content: 'Accordion content',
+    },
   }
-};

@@ -1,8 +1,8 @@
-import * as React from "react"
-import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { ChevronDown } from "lucide-react"
+import * as React from 'react'
+import * as AccordionPrimitive from '@radix-ui/react-accordion'
+import { ChevronDown } from 'lucide-react'
 
-import { cn, getNameSpace } from "@/lib/utils"
+import { cn, getNameSpace } from '@/lib/utils'
 
 const Accordion = AccordionPrimitive.Root
 
@@ -16,23 +16,24 @@ const AccordionItem = React.forwardRef<
     {...props}
   />
 ))
-AccordionItem.displayName = "AccordionItem"
+AccordionItem.displayName = 'AccordionItem'
 
 const AccordionTrigger = React.forwardRef<
   WithNameSpace<React.ElementRef<typeof AccordionPrimitive.Trigger>>,
-  WithNameSpace<React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>>
+  WithNameSpace<
+    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+  >
 >(({ className, namespace, children, ...props }, ref) => (
   <AccordionPrimitive.Header className="flex">
     <AccordionPrimitive.Trigger
       ref={ref}
-      className={cn(
-        `${getNameSpace(namespace)}-accordion`,
-        className
-      )}
+      className={cn(`${getNameSpace(namespace)}-accordion`, className)}
       {...props}
     >
       {children}
-      <ChevronDown className={`${getNameSpace(namespace)}-accordion-chevron-down`} />
+      <ChevronDown
+        className={`${getNameSpace(namespace)}-accordion-chevron-down`}
+      />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))
@@ -40,17 +41,18 @@ AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
 
 const AccordionContent = React.forwardRef<
   WithNameSpace<React.ElementRef<typeof AccordionPrimitive.Content>>,
-  WithNameSpace<React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>>
+  WithNameSpace<
+    React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+  >
 >(({ className, namespace, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className={cn(
-      `${getNameSpace(namespace)}-accordion-content`,
-      className
-    )}
+    className={cn(`${getNameSpace(namespace)}-accordion-content`, className)}
     {...props}
   >
-    <div className={`${getNameSpace(namespace)}-accordion-children`}>{children}</div>
+    <div className={`${getNameSpace(namespace)}-accordion-children`}>
+      {children}
+    </div>
   </AccordionPrimitive.Content>
 ))
 AccordionContent.displayName = AccordionPrimitive.Content.displayName

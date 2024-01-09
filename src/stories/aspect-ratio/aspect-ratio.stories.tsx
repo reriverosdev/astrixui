@@ -1,6 +1,6 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react';
-import { AspectRatio } from '../..';
+import type { Meta, StoryObj } from '@storybook/react'
+import { AspectRatio } from '../..'
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -16,29 +16,39 @@ const meta = {
   argTypes: {},
   decorators: [
     (Story) => (
-      <div style={{ width: "300px", borderRadius: "6px"  }}>
+      <div style={{ width: '300px', borderRadius: '6px' }}>
         <Story />
       </div>
-    )
-  ]
-} satisfies Meta<typeof AspectRatio>;
+    ),
+  ],
+} satisfies Meta<typeof AspectRatio>
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+export default meta
+type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 export const Primary: Story = {
   args: {
     className: 'bg-muted',
     ratio: 16 / 9,
-    children: <img src="./src/stories/assets/context.png" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+    children: (
+      <img
+        src="./src/stories/assets/context.png"
+        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+      />
+    ),
   },
-};
+}
 
 export const Secondary: Story = {
   args: {
     className: 'bg-muted',
     ratio: 4 / 3,
-    children: <img src="./src/stories/assets/context.png" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+    children: (
+      <img
+        src="./src/stories/assets/context.png"
+        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+      />
+    ),
   },
-};
+}

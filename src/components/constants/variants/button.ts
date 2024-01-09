@@ -1,15 +1,16 @@
-import { getNameSpace } from "@/lib/utils";
-import { cva } from "class-variance-authority";
+import { getNameSpace } from '@/lib/utils'
+import { cva } from 'class-variance-authority'
 
-const  buttonVariants = (namespace: string) => cva(
-  `${getNameSpace(namespace)}-button`,
-  {
+const buttonVariants = (namespace: string) =>
+  cva(`${getNameSpace(namespace)}-button`, {
     variants: {
       variant: {
         default: `${getNameSpace(namespace)}-button-default`,
         outline: `${getNameSpace(namespace)}-button-outline`,
         destructive: `${getNameSpace(namespace)}-button-destructive`,
-        'destructive-outline': `${getNameSpace(namespace)}-button-destructive-outline`,
+        'destructive-outline': `${getNameSpace(
+          namespace
+        )}-button-destructive-outline`,
         success: `${getNameSpace(namespace)}-button-success`,
         'success-outline': `${getNameSpace(namespace)}-button-success-outline`,
         ghost: `${getNameSpace(namespace)}-button-ghost`,
@@ -23,12 +24,9 @@ const  buttonVariants = (namespace: string) => cva(
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: 'default',
+      size: 'default',
     },
-  }
-)
+  })
 
-export {
-  buttonVariants
-}
+export { buttonVariants }
