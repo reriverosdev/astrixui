@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { type VariantProps } from 'class-variance-authority'
+import * as React from "react";
+import { type VariantProps } from "class-variance-authority";
 
-import { cn, getNameSpace } from '@/lib/utils'
-import { alertVariants } from '../constants/variants/alert'
+import { childrenWithNamespace, cn, getNameSpace } from "@/lib/utils";
+import { alertVariants } from "../constants/variants/alert";
 
 const Alert = React.forwardRef<
   WithNameSpace<HTMLDivElement>,
@@ -15,19 +15,10 @@ const Alert = React.forwardRef<
     className={cn(alertVariants(namespace)({ variant }), className)}
     {...props}
   >
-    {children &&
-      React.Children.map<
-        WithNameSpace<React.ReactNode>,
-        WithNameSpace<React.ReactNode>
-      >(
-        children,
-        (child) =>
-          React.isValidElement(child) &&
-          React.cloneElement(child, { namespace })
-      )}
+    {children && childrenWithNamespace(children, getNameSpace(namespace))}
   </div>
-))
-Alert.displayName = 'Alert'
+));
+Alert.displayName = "Alert";
 
 const AlertTitle = React.forwardRef<
   WithNameSpace<HTMLParagraphElement>,
@@ -38,8 +29,8 @@ const AlertTitle = React.forwardRef<
     className={cn(`${getNameSpace(namespace)}-alert-title`, className)}
     {...props}
   />
-))
-AlertTitle.displayName = 'AlertTitle'
+));
+AlertTitle.displayName = "AlertTitle";
 
 const AlertDescription = React.forwardRef<
   WithNameSpace<HTMLParagraphElement>,
@@ -50,7 +41,7 @@ const AlertDescription = React.forwardRef<
     className={cn(`${getNameSpace(namespace)}-alert-description`, className)}
     {...props}
   />
-))
-AlertDescription.displayName = 'AlertDescription'
+));
+AlertDescription.displayName = "AlertDescription";
 
-export { Alert, AlertTitle, AlertDescription }
+export { Alert, AlertTitle, AlertDescription };

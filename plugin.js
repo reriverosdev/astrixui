@@ -10,6 +10,8 @@ const {
   boxShadow,
   letterSpacing,
   flexShrink,
+  flexGrow,
+  flexBasis,
   transitionDuration,
   transitionProperty,
   transitionDelay,
@@ -822,6 +824,63 @@ export default plugin.withOptions(
           alignItems: objectPosition.center,
           padding: padding({ theme })["6"],
           paddingTop: padding({ theme })["0"],
+        },
+        [`.${namespace}-carousel`]: {
+          position: "relative",
+        },
+        [`.${namespace}-carousel-content`]: {
+          display: "flex",
+          "&.horizontal": {
+            marginLeft: `-${spacing[4]}`,
+          },
+          "&.vertical": {
+            marginTop: `-${spacing[4]}`,
+            flexDirection: "column",
+          },
+        },
+        [`.${namespace}-carousel-item`]: {
+          minWidth: width({ theme })["0"],
+          flexShrink: flexShrink["0"],
+          flexGrow: flexGrow["0"],
+          flexBasis: flexBasis({ theme }).full,
+          "&.horizontal": {
+            paddingLeft: spacing[4],
+          },
+          "&.vertical": {
+            paddingTop: spacing[4],
+          },
+        },
+        [`.${namespace}-carousel-previous`]: {
+          position: "absolute",
+          height: height({ theme })["8"],
+          width: width({ theme })["8"],
+          borderRadius: borderRadius.full,
+          "&.horizontal": {
+            left: `-${spacing[12]}`,
+            top: "50%",
+            transform: "translateY(-50%)",
+          },
+          "&.vertical": {
+            top: `-${spacing[12]}`,
+            left: "50%",
+            transform: "translateX(-50%) rotate(90deg)",
+          },
+        },
+        [`.${namespace}-carousel-next`]: {
+          position: "absolute",
+          height: height({ theme })["8"],
+          width: width({ theme })["8"],
+          borderRadius: borderRadius.full,
+          "&.horizontal": {
+            right: `-${spacing[12]}`,
+            top: "50%",
+            transform: "translateY(-50%)",
+          },
+          "&.vertical": {
+            bottom: `-${spacing[12]}`,
+            left: "50%",
+            transform: "translateX(-50%) rotate(90deg)",
+          },
         },
       });
     };
