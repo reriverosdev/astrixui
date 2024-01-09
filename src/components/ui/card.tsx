@@ -1,79 +1,95 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn, getNameSpace } from "@/lib/utils";
 
 const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+  WithNameSpace<HTMLDivElement>,
+  WithNameSpace<React.HTMLAttributes<HTMLDivElement>>
+>(({ className, children, namespace, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
-      className
-    )}
+    className={cn(`${getNameSpace(namespace)}-card`, className)}
     {...props}
-  />
-))
-Card.displayName = "Card"
+  >
+    {children &&
+      React.Children.map<
+        WithNameSpace<React.ReactNode>,
+        WithNameSpace<React.ReactNode>
+      >(
+        children,
+        (child) =>
+          React.isValidElement(child) &&
+          React.cloneElement(child, { namespace })
+      )}
+  </div>
+));
+Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+  WithNameSpace<HTMLDivElement>,
+  WithNameSpace<React.HTMLAttributes<HTMLDivElement>>
+>(({ className, namespace, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    className={cn(`${getNameSpace(namespace)}-card-header`, className)}
     {...props}
   />
-))
-CardHeader.displayName = "CardHeader"
+));
+CardHeader.displayName = "CardHeader";
 
 const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
+  WithNameSpace<HTMLParagraphElement>,
+  WithNameSpace<React.HTMLAttributes<HTMLHeadingElement>>
+>(({ className, namespace, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
-      className
-    )}
+    className={cn(`${getNameSpace(namespace)}-card-title`, className)}
     {...props}
   />
-))
-CardTitle.displayName = "CardTitle"
+));
+CardTitle.displayName = "CardTitle";
 
 const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
+  WithNameSpace<HTMLParagraphElement>,
+  WithNameSpace<React.HTMLAttributes<HTMLParagraphElement>>
+>(({ className, namespace, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn(`${getNameSpace(namespace)}-card-description`, className)}
     {...props}
   />
-))
-CardDescription.displayName = "CardDescription"
+));
+CardDescription.displayName = "CardDescription";
 
 const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
-))
-CardContent.displayName = "CardContent"
-
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+  WithNameSpace<HTMLDivElement>,
+  WithNameSpace<React.HTMLAttributes<HTMLDivElement>>
+>(({ className, namespace, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
+    className={cn(`${getNameSpace(namespace)}-card-content`, className)}
     {...props}
   />
-))
-CardFooter.displayName = "CardFooter"
+));
+CardContent.displayName = "CardContent";
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+const CardFooter = React.forwardRef<
+  WithNameSpace<HTMLDivElement>,
+  WithNameSpace<React.HTMLAttributes<HTMLDivElement>>
+>(({ className, namespace, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(`${getNameSpace(namespace)}-card-footer`, className)}
+    {...props}
+  />
+));
+CardFooter.displayName = "CardFooter";
+
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+};
