@@ -2,7 +2,7 @@ import * as React from 'react'
 import { PopoverProps } from '@radix-ui/react-popover'
 import { Check, ChevronsUpDown } from 'lucide-react'
 
-import { cn } from '@/lib/utils'
+import { childrenWithNamespace, cn, getNameSpace } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import {
   Command,
@@ -19,8 +19,16 @@ import {
 
 interface ComboboxProps extends PopoverProps {}
 
-const Combobox: React.FC<ComboboxProps> = ({ children, ...props }) => {
-  return <Popover {...props}>{children}</Popover>
+const Combobox: React.FC<WithNameSpace<ComboboxProps>> = ({
+  children,
+  namespace,
+  ...props
+}) => {
+  return (
+    <Popover {...props}>
+      {children && childrenWithNamespace(children, getNameSpace(namespace))}
+    </Popover>
+  )
 }
 Combobox.displayName = 'Combobox'
 
@@ -29,17 +37,23 @@ interface ComboboxSelectorProps extends ComboboxProps {
   open: boolean
 }
 
-const ComboboxSelector: React.FC<ComboboxSelectorProps> = ({ label, open }) => {
+const ComboboxSelector: React.FC<WithNameSpace<ComboboxSelectorProps>> = ({
+  label,
+  namespace,
+  open,
+}) => {
   return (
     <PopoverTrigger asChild>
       <Button
         variant="outline"
         role="combobox"
         aria-expanded={open}
-        className="w-[200px] justify-between"
+        className={`${getNameSpace(namespace)}-combobox-selector`}
       >
         {label}
-        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+        <ChevronsUpDown
+          className={`${getNameSpace(namespace)}-combobox-selector-chevron`}
+        />
       </Button>
     </PopoverTrigger>
   )
@@ -60,15 +74,16 @@ interface ComboboxOptionsProps extends ComboboxProps {
   currentSelected: string
 }
 
-const ComboboxOptions: React.FC<ComboboxOptionsProps> = ({
+const ComboboxOptions: React.FC<WithNameSpace<ComboboxOptionsProps>> = ({
   currentSelected,
   options,
   placeholder,
   emptyLabel,
+  namespace,
   onSelect,
 }) => {
   return (
-    <PopoverContent className="w-[200px] p-0">
+    <PopoverContent className={`${getNameSpace(namespace)}-combobox-popover`}>
       <Command>
         <CommandInput placeholder={placeholder} />
         <CommandEmpty>{emptyLabel}</CommandEmpty>
@@ -80,8 +95,11 @@ const ComboboxOptions: React.FC<ComboboxOptionsProps> = ({
             >
               <Check
                 className={cn(
-                  'mr-2 h-4 w-4',
-                  currentSelected === option.value ? 'opacity-100' : 'opacity-0'
+                  `${getNameSpace(namespace)}-combobox-popover-check`,
+                  {
+                    selected: currentSelected === option.value,
+                    'not-selected': currentSelected !== option.value,
+                  }
                 )}
               />
               {option.label}

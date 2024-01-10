@@ -882,6 +882,33 @@ export default plugin.withOptions(
             transform: 'translateX(-50%) rotate(90deg)',
           },
         },
+        [`.${namespace}-combobox-selector`]: {
+          width: width({ theme }).full,
+          justifyContent: 'space-between',
+        },
+        [`.${namespace}-combobox-selector-chevron`]: {
+          marginLeft: spacing[2],
+          height: height({ theme })[4],
+          width: width({ theme })[4],
+          flexShrink: flexShrink[0],
+          opacity: opacity[50],
+        },
+        [`.${namespace}-combobox-popover`]: {
+          width: 'inherit',
+          padding: padding({ theme })[0],
+          backgroundColor: backgroundColor({ theme }).white,
+        },
+        [`.${namespace}-combobox-popover-check`]: {
+          marginRight: spacing[2],
+          height: height({ theme })[4],
+          width: width({ theme })[4],
+          '&.selected': {
+            opacity: opacity[100],
+          },
+          '&.not-selected': {
+            opacity: opacity[0],
+          },
+        },
       })
     }
   },
