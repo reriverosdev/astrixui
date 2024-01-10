@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react'
 
-import { childrenWithNamespace, cn, getNameSpace } from "@/lib/utils";
+import { childrenWithNamespace, cn, getNameSpace } from '@/lib/utils'
 
 const Card = React.forwardRef<
   WithNameSpace<HTMLDivElement>,
@@ -13,8 +13,8 @@ const Card = React.forwardRef<
   >
     {children && childrenWithNamespace(children, getNameSpace(namespace))}
   </div>
-));
-Card.displayName = "Card";
+))
+Card.displayName = 'Card'
 
 const CardHeader = React.forwardRef<
   WithNameSpace<HTMLDivElement>,
@@ -25,8 +25,8 @@ const CardHeader = React.forwardRef<
     className={cn(`${getNameSpace(namespace)}-card-header`, className)}
     {...props}
   />
-));
-CardHeader.displayName = "CardHeader";
+))
+CardHeader.displayName = 'CardHeader'
 
 const CardTitle = React.forwardRef<
   WithNameSpace<HTMLParagraphElement>,
@@ -37,8 +37,8 @@ const CardTitle = React.forwardRef<
     className={cn(`${getNameSpace(namespace)}-card-title`, className)}
     {...props}
   />
-));
-CardTitle.displayName = "CardTitle";
+))
+CardTitle.displayName = 'CardTitle'
 
 const CardDescription = React.forwardRef<
   WithNameSpace<HTMLParagraphElement>,
@@ -49,8 +49,8 @@ const CardDescription = React.forwardRef<
     className={cn(`${getNameSpace(namespace)}-card-description`, className)}
     {...props}
   />
-));
-CardDescription.displayName = "CardDescription";
+))
+CardDescription.displayName = 'CardDescription'
 
 const CardContent = React.forwardRef<
   WithNameSpace<HTMLDivElement>,
@@ -61,8 +61,8 @@ const CardContent = React.forwardRef<
     className={cn(`${getNameSpace(namespace)}-card-content`, className)}
     {...props}
   />
-));
-CardContent.displayName = "CardContent";
+))
+CardContent.displayName = 'CardContent'
 
 const CardFooter = React.forwardRef<
   WithNameSpace<HTMLDivElement>,
@@ -73,14 +73,7 @@ const CardFooter = React.forwardRef<
     className={cn(`${getNameSpace(namespace)}-card-footer`, className)}
     {...props}
   />
-));
-CardFooter.displayName = "CardFooter";
+))
+CardFooter.displayName = 'CardFooter'
 
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
-};
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
